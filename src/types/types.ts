@@ -1,8 +1,8 @@
 export type Recipe = {
   recipeId: string
   title: string
-  category: string
-  area: string
+  category: string | null
+  area: string | null
   instructions: Array<string>
   imageUrl: string | null
   videoUrl: string | null

@@ -9,7 +9,12 @@ import {
   Text,
   Tooltip,
 } from '@mantine/core'
-import { IconBrandYoutube, IconHeart } from '@tabler/icons-react'
+import {
+  IconBrandYoutube,
+  IconCategory,
+  IconHeart,
+  IconMapPin,
+} from '@tabler/icons-react'
 import type { ReactElement } from 'react'
 import type { Recipe } from '../../../../types/types.ts'
 
@@ -86,13 +91,25 @@ export const RecipeGridCard = ({
         </Text>
 
         <Group gap="4px">
-          <Badge variant="light" color="teal">
-            {recipe.category}
-          </Badge>
+          {recipe.category && (
+            <Badge
+              variant="light"
+              color="teal"
+              leftSection={<IconCategory size="12px" />}
+            >
+              {recipe.category}
+            </Badge>
+          )}
 
-          <Badge variant="light" color="blue">
-            {recipe.area}
-          </Badge>
+          {recipe.area && (
+            <Badge
+              variant="light"
+              color="blue"
+              leftSection={<IconMapPin size="12px" />}
+            >
+              {recipe.area}
+            </Badge>
+          )}
         </Group>
 
         {recipe.videoUrl && (

@@ -5,9 +5,11 @@ export const recipeDecoder: D.Decoder<Recipe> = D.object({
   required: {
     idMeal: D.string,
     strMeal: D.string,
-    strCategory: D.string,
-    strArea: D.string,
-    strInstructions: D.string,
+  },
+  optional: {
+    strCategory: D.nullable(D.string),
+    strArea: D.nullable(D.string),
+    strInstructions: D.nullable(D.string),
     strMealThumb: D.nullable(D.string),
     strYoutube: D.nullable(D.string),
 
@@ -55,28 +57,30 @@ export const recipeDecoder: D.Decoder<Recipe> = D.object({
   },
 }).andThen((decoded): Recipe => {
   const ingredients = Array.from({ length: 20 }, (_, i) => ({
-    name: decoded[`strIngredient${i + 1}`],
-    measure: decoded[`strMeasure${i + 1}`],
+    name: decoded[`strIngredient${i + 1}` as keyof typeof decoded],
+    measure: decoded[`strMeasure${i + 1}` as keyof typeof decoded],
   })).filter(
-    (ingredient) =>
+    (ingredient): ingredient is Recipe['ingredients'][number] =>
+      ingredient.name !== undefined &&
       ingredient.name !== null &&
       ingredient.name.length > 0 &&
+      ingredient.measure !== undefined &&
       ingredient.measure !== null &&
       ingredient.measure.length > 0,
   )
 
-  const instructions = decoded.strInstructions
+  const instructions = (decoded.strInstructions ?? '')
     .split(/[\r\n]+/)
     .filter((line) => line.trim().length > 0)
 
   return {
     recipeId: decoded.idMeal,
     title: decoded.strMeal,
-    category: decoded.strCategory,
-    area: decoded.strArea,
+    category: decoded.strCategory ?? null,
+    area: decoded.strArea ?? null,
     instructions,
-    imageUrl: decoded.strMealThumb,
-    videoUrl: decoded.strYoutube,
+    imageUrl: decoded.strMealThumb ?? null,
+    videoUrl: decoded.strYoutube ?? null,
     ingredients,
   } satisfies Recipe
 })
