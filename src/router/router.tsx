@@ -16,14 +16,14 @@ const childRoutes: Record<RoutePaths, ReactElement> = {
 
 const childRoutesArray: Array<RouteObject> = Object.entries(childRoutes).map(
   ([path, element]) => ({
-    path: path.split(/^\//)[1],
+    path,
     element,
   }),
 )
 
 const routeConfig: Array<RouteObject> = [
   {
-    path: '/',
+    path: '',
     element: <AppShell />,
     children: childRoutesArray,
   },
