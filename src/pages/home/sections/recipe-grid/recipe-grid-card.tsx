@@ -36,9 +36,6 @@ export const RecipeGridCard = ({
       padding="lg"
       radius="md"
       withBorder
-      style={{
-        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-      }}
       className="hover-card"
       onClick={() => {
         navigate(`/recipe/${recipe.recipeId}`)
@@ -56,9 +53,6 @@ export const RecipeGridCard = ({
           height={220}
           alt={recipe.title}
           className="hover-image"
-          style={{
-            transition: 'transform 0.3s ease',
-          }}
         />
 
         <Tooltip label="Add to favorites" position="top" withArrow>
@@ -70,9 +64,6 @@ export const RecipeGridCard = ({
             top="8px"
             right="8px"
             aria-label="Favorite"
-            style={{
-              transition: 'transform 0.2s ease',
-            }}
             className="hover-icon"
             onClick={(event) => {
               event.stopPropagation()
@@ -86,7 +77,7 @@ export const RecipeGridCard = ({
       </Card.Section>
 
       <Stack mt="md" gap="8px">
-        <Text fw={600} size="lg">
+        <Text fw={600} size="lg" lineClamp={2}>
           {recipe.title}
         </Text>
 
