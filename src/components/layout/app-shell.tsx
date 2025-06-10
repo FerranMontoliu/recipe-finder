@@ -20,7 +20,7 @@ export const AppShell = (): ReactElement => {
       <MantineAppShell.Header>
         <Group justify="space-between" h="100%" px="md">
           <Group gap="xs">
-            <IconChefHat size={24} />
+            <IconChefHat size={24} color="var(--mantine-color-yellow-6)" />
             <Text fw={700} size="lg">
               Recipe finder
             </Text>
