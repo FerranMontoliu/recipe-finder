@@ -11,12 +11,12 @@ export const SearchBar = ({
   onQueryChange,
 }: SearchBarProps): ReactElement => (
   <TextInput
-    placeholder="Search by recipe name or ingredient..."
+    placeholder="Search by recipe name, ingredient, category, or area..."
     leftSection={<IconSearch size={16} />}
     radius="md"
     size="md"
     w="100%"
-    value={query}
+    defaultValue={query}
     onChange={(event) => {
       onQueryChange(event.currentTarget.value)
     }}

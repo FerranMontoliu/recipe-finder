@@ -7,7 +7,8 @@ export const Header = (): ReactElement => (
 
     <Stack gap={0} justify="center" align="center">
       <Text c="gray.7">
-        Discover delicious recipes by searching for ingredients or dish names.
+        Discover delicious recipes by searching for recipe names, ingredients,
+        categories, or areas.
       </Text>
       <Text c="gray.7">
         Save your favorites and cook something amazing today!
