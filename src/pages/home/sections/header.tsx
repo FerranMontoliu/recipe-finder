@@ -2,15 +2,22 @@ import type { ReactElement } from 'react'
 import { Stack, Text, Title } from '@mantine/core'
 
 export const Header = (): ReactElement => (
-  <Stack gap="8px" justify="center" align="center">
-    <Title order={1}>Recipe finder</Title>
+  <Stack gap="8px" justify="center" align="center" test-id="header">
+    <Title order={1} ta="center" test-id="header-title">
+      Recipe finder
+    </Title>
 
-    <Stack gap={0} justify="center" align="center">
-      <Text c="gray.7">
+    <Stack
+      gap="4px"
+      justify="center"
+      align="center"
+      test-id="header-description"
+    >
+      <Text c="gray.7" ta="center">
         Discover delicious recipes by searching for recipe names, ingredients,
         categories, or areas.
       </Text>
-      <Text c="gray.7">
+      <Text c="gray.7" ta="center">
         Save your favorites and cook something amazing today!
       </Text>
     </Stack>

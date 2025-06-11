@@ -20,8 +20,10 @@ export const RecipeHeader = ({
   )
 
   return (
-    <Group justify="space-between" align="center" w="100%">
-      <Title order={1}>{title}</Title>
+    <Group justify="space-between" align="center" w="100%" test-id="header">
+      <Title order={1} test-id="header-title">
+        {title}
+      </Title>
 
       <Button
         onClick={(event) => {
@@ -35,6 +37,7 @@ export const RecipeHeader = ({
               console.error('Failed to toggle favorite')
             })
         }}
+        test-id="favorite-button"
       >
         {favorite ? (
           <Group wrap="nowrap" gap="4px">

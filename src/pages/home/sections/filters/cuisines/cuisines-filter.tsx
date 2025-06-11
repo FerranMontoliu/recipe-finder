@@ -60,6 +60,7 @@ const CuisinesFilter = ({
       radius="md"
       size="md"
       w="100%"
+      test-id="cuisines-filter-select"
     />
   )
 }

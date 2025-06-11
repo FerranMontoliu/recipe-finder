@@ -27,7 +27,7 @@ export const HomePage = (): ReactElement => {
   const recipes = getRecipesResult.data ?? []
 
   return (
-    <Stack justify="center" align="center" gap="16px">
+    <Stack justify="center" align="center" gap="16px" test-id="home-page">
       <Header />
 
       <Filters

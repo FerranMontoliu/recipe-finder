@@ -13,6 +13,7 @@ export const NotFoundPage = (): ReactElement => {
         height: 'calc(100vh - 60px - 56px - 32px)',
         textAlign: 'center',
       }}
+      test-id="not-found-page"
     >
       <Container size="xs">
         <Stack gap="xl" align="center">

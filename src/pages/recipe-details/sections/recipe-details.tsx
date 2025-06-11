@@ -24,6 +24,7 @@ export const RecipeDetails = ({
         sm: 4,
       }}
       h="100%"
+      test-id="recipe-details"
     >
       <RecipeDetailsItem label="Category" value={category} />
 

@@ -60,6 +60,7 @@ const CategoriesFilter = ({
       radius="md"
       size="md"
       w="100%"
+      test-id="categories-filter-select"
     />
   )
 }

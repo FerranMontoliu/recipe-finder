@@ -10,12 +10,12 @@ interface IngredientsListProps {
 export const IngredientsList = ({
   ingredients,
 }: IngredientsListProps): ReactElement => (
-  <Paper>
+  <Paper test-id="recipe-ingredients-list">
     <Stack gap="16px">
       <Title order={2}>Ingredients</Title>
 
       {ingredients.map((item, index) => (
-        <Stack key={index} gap="2px">
+        <Stack key={index} gap="2px" test-id="recipe-ingredients-list-item">
           <strong>{item.name}</strong>
           <span>{item.measure}</span>
         </Stack>

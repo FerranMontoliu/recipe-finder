@@ -4,7 +4,7 @@ import { IconInfoCircle } from '@tabler/icons-react'
 import { useParams } from 'react-router-dom'
 import { useGetRecipeById } from './hooks/use-get-recipe-by-id.ts'
 import { IngredientsList } from './sections/ingredients-list.tsx'
-import { InstructionsList } from './sections/instructions-list.tsx'
+import { StepsList } from './sections/steps-list.tsx'
 import { RecipeImage } from './sections/recipe-image.tsx'
 import { RecipeDetails } from './sections/recipe-details.tsx'
 import { RecipeHeader } from './sections/recipe-header.tsx'
@@ -20,7 +20,12 @@ export const RecipeDetailsPage = (): ReactElement => {
   useWindowTitle(recipe?.title ?? 'Recipe finder')
 
   return (
-    <Stack justify="center" align="center" gap="16px">
+    <Stack
+      justify="center"
+      align="center"
+      gap="16px"
+      test-id="recipe-details-page"
+    >
       {getRecipeResult.isLoading ? (
         <Center w="100%" h="300px">
           <Loader />
@@ -50,7 +55,7 @@ export const RecipeDetailsPage = (): ReactElement => {
                 cuisine={recipe.cuisine}
                 videoUrl={recipe.videoUrl}
                 numIngredients={recipe.ingredients.length}
-                numSteps={recipe.instructions.length}
+                numSteps={recipe.steps.length}
               />
             </Grid.Col>
 
@@ -78,7 +83,7 @@ export const RecipeDetailsPage = (): ReactElement => {
                 sm: 8,
               }}
             >
-              <InstructionsList instructions={recipe.instructions} />
+              <StepsList steps={recipe.steps} />
             </Grid.Col>
           </Grid>
         </>

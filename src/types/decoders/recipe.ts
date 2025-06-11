@@ -83,7 +83,7 @@ export const recipeDecoder: D.Decoder<Recipe> = D.object({
     title: decoded.strMeal,
     category: decoded.strCategory ?? null,
     cuisine: decoded.strArea ?? null,
-    instructions,
+    steps: instructions,
     imageUrl: decoded.strMealThumb ?? null,
     videoUrl: decoded.strYoutube ?? null,
     ingredients,

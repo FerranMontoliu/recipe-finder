@@ -49,6 +49,7 @@ export const RecipeGridCard = ({
       onClick={() => {
         void navigate(`/recipe/${recipe.recipeId}`)
       }}
+      test-id="recipe-grid-card"
     >
       <Card.Section
         pos="relative"
@@ -77,7 +78,7 @@ export const RecipeGridCard = ({
             top="24px"
             right="24px"
             aria-label="Favorite"
-            className="hover-icon"
+            className={`hover-icon ${favorite ? 'favorited' : ''}`}
             onClick={(event) => {
               event.stopPropagation()
 
@@ -92,6 +93,7 @@ export const RecipeGridCard = ({
             style={{
               zIndex: 10,
             }}
+            test-id="favorite-button"
           >
             {favorite ? (
               <IconHeartFilled size="20px" />

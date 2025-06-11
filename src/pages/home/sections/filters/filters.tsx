@@ -40,7 +40,7 @@ export const Filters = ({
     query !== '' || ingredient !== null || cuisine !== null
 
   return (
-    <Stack w="100%" gap="8px">
+    <Stack w="100%" gap="8px" test-id="filters-section">
       <SearchBar
         query={query}
         onQueryChange={onQueryChange}

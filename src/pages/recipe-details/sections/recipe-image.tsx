@@ -10,7 +10,7 @@ export const RecipeImage = ({
   imageUrl,
   title,
 }: RecipeImageProps): ReactElement => (
-  <AspectRatio ratio={1} w="100%" h="100%">
+  <AspectRatio ratio={1} w="100%" h="100%" test-id="recipe-image">
     <Image
       radius="md"
       src={imageUrl}

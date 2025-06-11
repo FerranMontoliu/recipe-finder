@@ -23,5 +23,6 @@ export const SearchBar = ({
       onQueryChange(event.currentTarget.value)
     }}
     disabled={disabled}
+    test-id="search-bar-input"
   />
 )

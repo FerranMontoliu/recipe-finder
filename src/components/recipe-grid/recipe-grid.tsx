@@ -9,7 +9,7 @@ interface RecipeGridProps {
 export const RecipeGrid = ({ recipes }: RecipeGridProps): ReactElement => {
   if (recipes.length === 0) {
     return (
-      <Center w="100%" h="300px">
+      <Center w="100%" h="300px" test-id="recipe-grid--empty">
         <Text size="lg" c="dimmed" fw={500}>
           No recipes found for this search
         </Text>
@@ -27,6 +27,7 @@ export const RecipeGrid = ({ recipes }: RecipeGridProps): ReactElement => {
       w="100%"
       spacing="8px"
       verticalSpacing="12px"
+      test-id="recipe-grid"
     >
       {recipes.map((recipe) => (
         <RecipeGridCard key={recipe.recipeId} recipe={recipe} />

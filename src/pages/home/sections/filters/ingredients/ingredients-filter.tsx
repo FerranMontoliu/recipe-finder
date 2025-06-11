@@ -60,6 +60,7 @@ const IngredientsFilter = ({
       radius="md"
       size="md"
       w="100%"
+      test-id="ingredients-filter-select"
     />
   )
 }
