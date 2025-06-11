@@ -3,3 +3,8 @@
 * {
     scroll-behavior: smooth;
 }
+
+.mantine-List-item::marker {
+    color: var(--mantine-color-yellow-8);
+    font-weight: 600;
+}

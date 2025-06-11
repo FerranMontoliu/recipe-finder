@@ -59,15 +59,20 @@ export const recipeDecoder: D.Decoder<Recipe> = D.object({
   const ingredients = Array.from({ length: 20 }, (_, i) => ({
     name: decoded[`strIngredient${i + 1}` as keyof typeof decoded],
     measure: decoded[`strMeasure${i + 1}` as keyof typeof decoded],
-  })).filter(
-    (ingredient): ingredient is Recipe['ingredients'][number] =>
-      ingredient.name !== undefined &&
-      ingredient.name !== null &&
-      ingredient.name.length > 0 &&
-      ingredient.measure !== undefined &&
-      ingredient.measure !== null &&
-      ingredient.measure.length > 0,
-  )
+  }))
+    .filter(
+      (ingredient): ingredient is Recipe['ingredients'][number] =>
+        ingredient.name !== undefined &&
+        ingredient.name !== null &&
+        ingredient.name.length > 0 &&
+        ingredient.measure !== undefined &&
+        ingredient.measure !== null &&
+        ingredient.measure.length > 0,
+    )
+    .map(({ name, measure }) => ({
+      name: name.charAt(0).toUpperCase() + name.slice(1),
+      measure,
+    }))
 
   const instructions = (decoded.strInstructions ?? '')
     .split(/[\r\n]+/)

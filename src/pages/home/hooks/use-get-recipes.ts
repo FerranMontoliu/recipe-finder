@@ -1,7 +1,7 @@
 // hooks/useMealSearch.ts
 import { useQuery } from '@tanstack/react-query'
-import { getRecipesResponseDecoder } from '../types/decoders.ts'
-import type { Recipe } from '../types/types.ts'
+import { getRecipesResponseDecoder } from '../../../types/decoders.ts'
+import type { Recipe } from '../../../types/types.ts'
 
 const API_BASE = 'https://www.themealdb.com/api/json/v1/1'
 
@@ -12,9 +12,7 @@ const buildUrls = (query: string) => [
   `${API_BASE}/filter.php?a=${query}`, // Area
 ]
 
-const decodeGetRecipesResult = async (
-  res: Response,
-): Promise<Recipe[] | null> => {
+const decodeResult = async (res: Response): Promise<Array<Recipe>> => {
   const json = await res.json()
   const decoded = getRecipesResponseDecoder.validate(json)
 
@@ -30,15 +28,13 @@ const fetchRecipesByQuery = async (query: string): Promise<Array<Recipe>> => {
   const urls = buildUrls(query)
 
   const allRecipes = await Promise.all(
-    urls.map((url) =>
-      fetch(url).then((result) => decodeGetRecipesResult(result)),
-    ),
+    urls.map((url) => fetch(url).then((result) => decodeResult(result))),
   )
 
   // Flatten and deduplicate by recipeId
   const dedupedRecipes: Array<Recipe> = Object.values(
     allRecipes.flat().reduce((acc: Record<string, Recipe>, recipe) => {
-      if (recipe && !acc[recipe.recipeId]) {
+      if (!acc[recipe.recipeId]) {
         acc[recipe.recipeId] = recipe
       }
       return acc
