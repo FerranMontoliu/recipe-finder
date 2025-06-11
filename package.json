@@ -10,7 +10,8 @@
     "prettier": "prettier --write .",
     "preview": "vite preview",
     "prepare": "husky",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:integration": "vitest run --reporter=verbose"
   },
   "dependencies": {
     "@mantine/core": "^8.1.0",
