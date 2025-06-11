@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-const URL = 'http://localhost:5173/recipe/53065'
+const URL = '/recipe/53065'
 
 test('has title', async ({ page }) => {
   await page.goto(URL)
