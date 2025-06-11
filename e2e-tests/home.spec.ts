@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { getByTestId } from './helpers.ts'
 
 const URL = '/'
 
@@ -11,7 +12,7 @@ test('has title', async ({ page }) => {
 test('has header', async ({ page }) => {
   await page.goto(URL)
 
-  const headerTitle = page.locator('header-title')
+  const headerTitle = getByTestId(page, 'header-title')
   await expect(headerTitle).toBeVisible()
   await expect(headerTitle).toHaveText('Recipe finder')
 })
@@ -19,37 +20,43 @@ test('has header', async ({ page }) => {
 test('has filters', async ({ page }) => {
   await page.goto(URL)
 
-  const filtersSection = page.locator('filters-section')
+  const filtersSection = getByTestId(page, 'filters-section')
   await expect(filtersSection).toBeVisible()
 
-  const searchBar = filtersSection.locator('search-bar-input')
+  const searchBar = getByTestId(filtersSection, 'search-bar-input')
   await expect(searchBar).toBeVisible()
 
-  const ingredientsFilter = filtersSection.locator('ingredients-filter-select')
+  const ingredientsFilter = getByTestId(
+    filtersSection,
+    'ingredients-filter-select',
+  )
   await expect(ingredientsFilter).toBeVisible()
 
-  const cuisinesFilter = filtersSection.locator('cuisines-filter-select')
+  const cuisinesFilter = getByTestId(filtersSection, 'cuisines-filter-select')
   await expect(cuisinesFilter).toBeVisible()
 
-  const categoriesFilter = filtersSection.locator('categories-filter-select')
+  const categoriesFilter = getByTestId(
+    filtersSection,
+    'categories-filter-select',
+  )
   await expect(categoriesFilter).toBeVisible()
 })
 
 test('has recipe grid', async ({ page }) => {
   await page.goto(URL)
 
-  const recipeGrid = page.locator('recipe-grid')
+  const recipeGrid = getByTestId(page, 'recipe-grid')
   await expect(recipeGrid).toBeVisible()
 
-  const recipeGridCards = recipeGrid.locator('recipe-grid-card')
+  const recipeGridCards = getByTestId(recipeGrid, 'recipe-grid-card')
   await expect(recipeGridCards).toHaveCount(25)
 })
 
 test('recipe grid cards are clickable', async ({ page }) => {
   await page.goto(URL)
 
-  const recipeGrid = page.locator('recipe-grid')
-  const firstRecipeCard = recipeGrid.locator('recipe-grid-card').first()
+  const recipeGrid = getByTestId(page, 'recipe-grid')
+  const firstRecipeCard = getByTestId(recipeGrid, 'recipe-grid-card').first()
 
   await expect(firstRecipeCard).toBeVisible()
   await firstRecipeCard.click()
@@ -57,7 +64,7 @@ test('recipe grid cards are clickable', async ({ page }) => {
   await expect(page).toHaveURL(/\/recipe\/\d+/)
   await expect(page).not.toHaveTitle(/Recipe finder/)
 
-  const recipeDetailsPage = page.locator('recipe-details-page')
+  const recipeDetailsPage = getByTestId(page, 'recipe-details-page')
   await expect(recipeDetailsPage).toBeVisible()
 })
 
@@ -66,12 +73,12 @@ test('recipe grid cards can be favorited and un-favorited', async ({
 }) => {
   await page.goto(URL)
 
-  const recipeGrid = page.locator('recipe-grid')
-  const firstRecipeCard = recipeGrid.locator('recipe-grid-card').first()
+  const recipeGrid = getByTestId(page, 'recipe-grid')
+  const firstRecipeCard = getByTestId(recipeGrid, 'recipe-grid-card').first()
 
   await expect(firstRecipeCard).toBeVisible()
 
-  const favoriteButton = firstRecipeCard.locator('favorite-button')
+  const favoriteButton = getByTestId(firstRecipeCard, 'favorite-button')
   await expect(favoriteButton).toBeVisible()
 
   // Click to favorite
@@ -88,14 +95,14 @@ test('recipe grid shows empty state when no recipes found', async ({
 }) => {
   await page.goto(URL)
 
-  const recipeGrid = page.locator('recipe-grid')
+  const recipeGrid = getByTestId(page, 'recipe-grid')
   await expect(recipeGrid).toBeVisible()
 
-  const filtersSection = page.locator('filters-section')
-  const searchBar = filtersSection.locator('search-bar-input')
+  const filtersSection = getByTestId(page, 'filters-section')
+  const searchBar = getByTestId(filtersSection, 'search-bar-input')
 
   await searchBar.fill('nonexistentrecipe')
 
-  const emptyState = recipeGrid.locator('recipe-grid--empty')
+  const emptyState = getByTestId(page, 'recipe-grid--empty')
   await expect(emptyState).toBeVisible()
 })

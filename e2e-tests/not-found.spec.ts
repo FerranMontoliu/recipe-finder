@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { getByTestId } from './helpers.ts'
 
 const URL = '/this-is-a-random-url'
 
@@ -11,6 +12,6 @@ test('has title', async ({ page }) => {
 test('has content', async ({ page }) => {
   await page.goto(URL)
 
-  const notFoundPageContainer = page.locator('not-found-page')
+  const notFoundPageContainer = getByTestId(page, 'not-found-page')
   await expect(notFoundPageContainer).toBeVisible()
 })

@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { getByTestId } from './helpers.ts'
 
 const URL = '/recipe/53065'
 
@@ -11,7 +12,7 @@ test('has title', async ({ page }) => {
 test('has header', async ({ page }) => {
   await page.goto(URL)
 
-  const headerTitle = page.locator('header-title')
+  const headerTitle = getByTestId(page, 'header-title')
   await expect(headerTitle).toBeVisible()
   await expect(headerTitle).toHaveText('Sushi')
 })
@@ -19,7 +20,7 @@ test('has header', async ({ page }) => {
 test('has recipe details', async ({ page }) => {
   await page.goto(URL)
 
-  const recipeDetails = page.locator('recipe-details')
+  const recipeDetails = getByTestId(page, 'recipe-details')
   await expect(recipeDetails).toBeVisible()
 
   await expect(recipeDetails).toContainText('Category')
@@ -31,7 +32,7 @@ test('has recipe details', async ({ page }) => {
 test('has recipe image', async ({ page }) => {
   await page.goto(URL)
 
-  const recipeImage = page.locator('recipe-image')
+  const recipeImage = getByTestId(page, 'recipe-image')
   await expect(recipeImage).toBeVisible()
 
   const imageElement = recipeImage.locator('img')
@@ -41,10 +42,11 @@ test('has recipe image', async ({ page }) => {
 test('has recipe ingredients list', async ({ page }) => {
   await page.goto(URL)
 
-  const ingredientsList = page.locator('recipe-ingredients-list')
+  const ingredientsList = getByTestId(page, 'recipe-ingredients-list')
   await expect(ingredientsList).toBeVisible()
 
-  const ingredientsItems = ingredientsList.locator(
+  const ingredientsItems = getByTestId(
+    ingredientsList,
     'recipe-ingredients-list-item',
   )
   await expect(ingredientsItems).toHaveCount(7)
@@ -53,17 +55,17 @@ test('has recipe ingredients list', async ({ page }) => {
 test('has recipe steps list', async ({ page }) => {
   await page.goto(URL)
 
-  const stepsList = page.locator('recipe-steps-list')
+  const stepsList = getByTestId(page, 'recipe-steps-list')
   await expect(stepsList).toBeVisible()
 
-  const stepsItems = stepsList.locator('recipe-steps-list-item')
+  const stepsItems = getByTestId(stepsList, 'recipe-steps-list-item')
   await expect(stepsItems).toHaveCount(22)
 })
 
 test('the recipe can be favorited and un-favorited', async ({ page }) => {
   await page.goto(URL)
 
-  const favoriteButton = page.locator('favorite-button')
+  const favoriteButton = getByTestId(page, 'favorite-button')
   await expect(favoriteButton).toBeVisible()
 
   // Initial state should be not favorited
