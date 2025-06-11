@@ -27,7 +27,7 @@ export const RecipeHeader = ({
         onClick={(event) => {
           event.stopPropagation()
 
-          toggleFavorite({ recipeId })
+          toggleFavorite({ recipe })
             .then(() => {
               setFavorite((prev) => !prev)
             })

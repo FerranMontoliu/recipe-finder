@@ -1,9 +1,11 @@
+import type { Recipe } from '../types'
+
 /**
  * Get favorites from localStorage
  *
- * @returns {Record<string, true>} An object where keys are recipe IDs and values are true
+ * @returns {Record<string, Recipe>} An object where keys are recipe IDs and values are Recipe objects that are favorites
  */
-const getFavorites = (): Record<string, true> => {
+const getFavorites = (): Record<string, Recipe> => {
   const favorites = localStorage.getItem('favorites')
   return favorites ? JSON.parse(favorites) : {}
 }
@@ -17,16 +19,17 @@ const getFavorites = (): Record<string, true> => {
  *
  */
 export const toggleFavorite = async ({
-  recipeId,
+  recipe,
 }: {
-  recipeId: string
+  recipe: Recipe
 }): Promise<void> => {
+  const { recipeId } = recipe
   const favorites = getFavorites()
 
   if (favorites[recipeId]) {
     delete favorites[recipeId]
   } else {
-    favorites[recipeId] = true
+    favorites[recipeId] = recipe
   }
 
   localStorage.setItem('favorites', JSON.stringify(favorites))
