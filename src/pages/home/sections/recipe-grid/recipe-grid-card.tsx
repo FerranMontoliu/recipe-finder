@@ -50,7 +50,7 @@ export const RecipeGridCard = ({
       withBorder
       className="hover-card"
       onClick={() => {
-        navigate(`/recipe/${recipe.recipeId}`)
+        void navigate(`/recipe/${recipe.recipeId}`)
       }}
     >
       <Card.Section
@@ -80,9 +80,13 @@ export const RecipeGridCard = ({
             onClick={(event) => {
               event.stopPropagation()
 
-              toggleFavorite({ recipeId }).then(() => {
-                setFavorite((prev) => !prev)
-              })
+              toggleFavorite({ recipeId })
+                .then(() => {
+                  setFavorite((prev) => !prev)
+                })
+                .catch(() => {
+                  console.error('Failed to toggle favorite')
+                })
             }}
             style={{
               zIndex: 10,

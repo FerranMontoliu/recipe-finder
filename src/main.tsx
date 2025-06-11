@@ -5,7 +5,12 @@ import { App } from './App.tsx'
 import '@mantine/core/styles.css'
 import './main.css'
 
-createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')
+if (!root) {
+  throw new Error('Root element not found')
+}
+
+createRoot(root).render(
   <StrictMode>
     <App />
   </StrictMode>,

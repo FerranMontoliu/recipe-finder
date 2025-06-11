@@ -27,9 +27,13 @@ export const RecipeHeader = ({
         onClick={(event) => {
           event.stopPropagation()
 
-          toggleFavorite({ recipeId }).then(() => {
-            setFavorite((prev) => !prev)
-          })
+          toggleFavorite({ recipeId })
+            .then(() => {
+              setFavorite((prev) => !prev)
+            })
+            .catch(() => {
+              console.error('Failed to toggle favorite')
+            })
         }}
       >
         {favorite ? (

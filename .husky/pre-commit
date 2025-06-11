@@ -1,8 +1,11 @@
-#!/bin/sh
-
 #!/usr/bin/env sh
 . "$(dirname "$0")/_/h"
 
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Format staged files
 prettier "$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')" --write --ignore-unknown
 
+# Lint the project
 pnpm run lint
