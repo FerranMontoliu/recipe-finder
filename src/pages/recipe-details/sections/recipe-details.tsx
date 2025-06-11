@@ -18,7 +18,12 @@ export const RecipeDetails = ({
   videoUrl,
 }: RecipeDetailsProps): ReactElement => (
   <Stack>
-    <SimpleGrid cols={4}>
+    <SimpleGrid
+      cols={{
+        base: 2,
+        sm: 4,
+      }}
+    >
       <Paper>
         <Stack gap="8px" align="center">
           <Text fw={500}>Category</Text>
