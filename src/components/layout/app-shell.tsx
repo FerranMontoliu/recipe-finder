@@ -3,6 +3,7 @@ import {
   Anchor,
   AppShell as MantineAppShell,
   Burger,
+  Center,
   Container,
   Drawer,
   Group,
@@ -18,7 +19,7 @@ export const AppShell = (): ReactElement => {
   const [opened, { toggle, close }] = useDisclosure()
 
   return (
-    <MantineAppShell header={{ height: 60 }} padding="md">
+    <MantineAppShell header={{ height: 60 }}>
       <MantineAppShell.Header>
         <Group justify="space-between" h="100%" px="md">
           <Group gap="xs">
@@ -51,9 +52,17 @@ export const AppShell = (): ReactElement => {
       </Drawer>
 
       <MantineAppShell.Main>
-        <Container>
-          <Outlet />
-        </Container>
+        <>
+          <Container p="md" mih="calc(100vh - 60px - 56px)">
+            <Outlet />
+          </Container>
+
+          <Center bg="gray.1" py="16px" px="24px">
+            <Text size="sm" lh="24px">
+              Made with ❤️ by Ferran
+            </Text>
+          </Center>
+        </>
       </MantineAppShell.Main>
     </MantineAppShell>
   )

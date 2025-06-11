@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 import type { ReactElement } from 'react'
 
 export const NotFoundPage = (): ReactElement => (
-  <Center style={{ height: 'calc(100vh - 60px - 32px)', textAlign: 'center' }}>
+  <Center
+    style={{ height: 'calc(100vh - 60px - 56px - 32px)', textAlign: 'center' }}
+  >
     <Container size="xs">
       <Stack gap="xl" align="center">
         <Text size="96px" fw={700} c="red.6">
