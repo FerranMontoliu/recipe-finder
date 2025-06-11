@@ -1,7 +1,5 @@
-// hooks/useMealSearch.ts
 import { useQuery } from '@tanstack/react-query'
-import { getRecipesResponseDecoder } from '../../../types/decoders.ts'
-import type { Recipe } from '../../../types/types.ts'
+import { getRecipesResponseDecoder, type Recipe } from '../../../types'
 
 const API_BASE = 'https://www.themealdb.com/api/json/v1/1'
 
@@ -30,6 +28,5 @@ export const useGetRecipeById = (recipeId: string) => {
   return useQuery({
     queryKey: ['recipe-by-id', recipeId],
     queryFn: () => fetchRecipeByIdQuery(recipeId),
-    staleTime: 1000 * 60 * 5, // 5 minutes
   })
 }

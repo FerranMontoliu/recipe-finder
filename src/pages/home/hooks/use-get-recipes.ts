@@ -1,62 +1,20 @@
 import { useQuery } from '@tanstack/react-query'
-import { getRecipesResponseDecoder } from '../../../types/decoders.ts'
-import type { Recipe } from '../../../types/types.ts'
+import {
+  fetchRecipesByCategory,
+  fetchRecipesByCuisine,
+  fetchRecipesByIngredient,
+  fetchRecipesByQuery,
+} from '../../../api'
 
-const API_BASE = 'https://www.themealdb.com/api/json/v1/1'
-
-const decodeResult = async (res: Response): Promise<Recipe[]> => {
-  const json: unknown = await res.json()
-  const decoded = getRecipesResponseDecoder.validate(json)
-
-  if (decoded.type === 'error') {
-    console.error('Decoding failed:', decoded.error)
-    return []
-  }
-
-  return decoded.data
-}
-
-const fetchRecipesByQuery = async (query: string): Promise<Recipe[]> => {
-  const url = `${API_BASE}/search.php?s=${query}`
-  const recipes = await fetch(url).then((result) => decodeResult(result))
-
-  return recipes
-}
-
-const fetchRecipesByCuisine = async (cuisine: string): Promise<Recipe[]> => {
-  const url = `${API_BASE}/filter.php?a=${cuisine}`
-  const recipes = await fetch(url).then((result) => decodeResult(result))
-
-  return recipes
-}
-
-const fetchRecipesByIngredient = async (query: string): Promise<Recipe[]> => {
-  const url = `${API_BASE}/filter.php?i=${query}`
-  const recipes = await fetch(url).then((result) => decodeResult(result))
-
-  return recipes
-}
-
-const fetchRecipesByCategory = async (query: string): Promise<Recipe[]> => {
-  const url = `${API_BASE}/filter.php?c=${query}`
-  const recipes = await fetch(url).then((result) => decodeResult(result))
-
-  return recipes
-}
-
-export const useGetRecipes = ({
-  query,
-  cuisine,
-  ingredient,
-  category,
-}: {
+export const useGetRecipes = (args: {
   query: string
   cuisine: string | null
   ingredient: string | null
   category: string | null
 }) => {
+  const { query, cuisine, ingredient, category } = args
   return useQuery({
-    queryKey: ['recipes', { query, cuisine, ingredient, category }],
+    queryKey: ['recipes', args],
     queryFn: () => {
       if (cuisine !== null) {
         return fetchRecipesByCuisine(cuisine)
@@ -72,6 +30,5 @@ export const useGetRecipes = ({
 
       return fetchRecipesByQuery(query)
     },
-    staleTime: 1000 * 60 * 5, // 5 minutes
   })
 }

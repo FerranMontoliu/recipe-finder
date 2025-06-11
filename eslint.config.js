@@ -33,6 +33,7 @@ export default tseslint.config(
     rules: {
       ...reactX.configs['recommended-typescript'].rules,
       ...reactDom.configs.recommended.rules,
+      '@typescript-eslint/array-type': ['error', { default: 'generic' }],
     },
   },
 )

@@ -7,25 +7,25 @@ import { RecipeDetailsPage } from '../pages/recipe-details'
 import { NotFoundPage } from '../pages/not-found'
 import { AppShell } from '../components/layout/app-shell.tsx'
 
-const childRoutes: Record<RoutePaths, ReactElement> = {
+const routesMap: Record<RoutePaths, ReactElement> = {
   [RoutePaths.Home]: <HomePage />,
   [RoutePaths.Favorites]: <FavoriteRecipesPage />,
   [RoutePaths.RecipeDetails]: <RecipeDetailsPage />,
   [RoutePaths.NotFound]: <NotFoundPage />,
 }
 
-const childRoutesArray: RouteObject[] = Object.entries(childRoutes).map(
+const routes: Array<RouteObject> = Object.entries(routesMap).map(
   ([path, element]) => ({
     path,
     element,
   }),
 )
 
-const routeConfig: RouteObject[] = [
+const routeConfig: Array<RouteObject> = [
   {
     path: '',
     element: <AppShell />,
-    children: childRoutesArray,
+    children: routes,
   },
 ]
 

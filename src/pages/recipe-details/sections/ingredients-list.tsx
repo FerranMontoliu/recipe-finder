@@ -2,10 +2,10 @@ import type { ReactElement } from 'react'
 import { Paper, Stack, Title } from '@mantine/core'
 
 interface IngredientsListProps {
-  ingredients: {
+  ingredients: Array<{
     name: string
     measure: string
-  }[]
+  }>
 }
 export const IngredientsList = ({
   ingredients,

@@ -1,8 +1,8 @@
 import { type ReactElement, useState } from 'react'
 import { Button, Group, Text, Title } from '@mantine/core'
 import { IconHeart, IconHeartFilled } from '@tabler/icons-react'
-import type { Recipe } from '../../../types/types.ts'
-import { isFavorite, toggleFavorite } from '../../../utils/toggle-favorite.ts'
+import type { Recipe } from '../../../types'
+import { isFavorite, toggleFavorite } from '../../../utils/favorite-utils.ts'
 
 interface RecipeHeaderProps {
   recipe: Recipe

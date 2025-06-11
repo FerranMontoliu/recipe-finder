@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 import { Select } from '@mantine/core'
-import { useGetCategories } from '../../hooks/use-get-categories.ts'
-import type { Category } from '../../../../types/types.ts'
+import { useGetCategories } from './hooks/use-get-categories.ts'
+import type { Category } from '../../../../../types'
 
 interface CategoriesFilterControllerProps {
   selectedCategory: string | null
@@ -37,7 +37,7 @@ export const CategoriesFilterController = ({
 }
 
 interface CategoriesFilterProps {
-  categories: Category[]
+  categories: Array<Category>
   selectedCategory: string | null
   onCategorySelect: (category: string | null) => void
   disabled?: boolean

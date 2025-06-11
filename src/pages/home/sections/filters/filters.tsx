@@ -1,9 +1,9 @@
 import { type ReactElement } from 'react'
 import { SearchBar } from './search-bar.tsx'
-import { IngredientsFilterController } from './ingredients-filter.tsx'
+import { IngredientsFilterController } from './ingredients/ingredients-filter.tsx'
 import { SimpleGrid, Stack } from '@mantine/core'
-import { CuisinesFilterController } from './cuisines-filter.tsx'
-import { CategoriesFilterController } from './categories-filter.tsx'
+import { CuisinesFilterController } from './cuisines/cuisines-filter.tsx'
+import { CategoriesFilterController } from './categories/categories-filter.tsx'
 
 interface FiltersProps {
   query: string

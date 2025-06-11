@@ -17,14 +17,11 @@ import {
   IconMapPin,
 } from '@tabler/icons-react'
 import { type ReactElement, useState } from 'react'
-import type { Recipe } from '../../../../types/types.ts'
+import type { Recipe } from '../../../../types'
 
 import './recipe-grid-card.css'
 import { useNavigate } from 'react-router-dom'
-import {
-  isFavorite,
-  toggleFavorite,
-} from '../../../../utils/toggle-favorite.ts'
+import { isFavorite, toggleFavorite } from '../../../../utils/favorite-utils.ts'
 
 interface RecipeGridCardProps {
   recipe: Recipe

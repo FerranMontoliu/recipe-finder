@@ -2,7 +2,7 @@ import type { ReactElement } from 'react'
 import { List, Paper, Stack, Title } from '@mantine/core'
 
 interface InstructionsListProps {
-  instructions: string[]
+  instructions: Array<string>
 }
 
 export const InstructionsList = ({
