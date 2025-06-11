@@ -21,7 +21,7 @@ export const RecipeHeader = ({
 
   return (
     <Group justify="space-between" align="center" w="100%" test-id="header">
-      <Title order={1} test-id="header-title">
+      <Title order={1} ta="center" test-id="header-title">
         {title}
       </Title>
 

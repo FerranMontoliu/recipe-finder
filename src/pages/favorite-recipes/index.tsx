@@ -11,7 +11,12 @@ export const FavoriteRecipesPage = (): ReactElement => {
   const favoriteRecipes = getFavoriteRecipes()
 
   return (
-    <Stack justify="center" align="center" gap="16px">
+    <Stack
+      justify="center"
+      align="center"
+      gap="16px"
+      test-id="favorite-recipes-page"
+    >
       <Header />
 
       <RecipeGrid recipes={favoriteRecipes} />
