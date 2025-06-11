@@ -22,12 +22,20 @@ export const AppShell = (): ReactElement => {
     <MantineAppShell header={{ height: 60 }}>
       <MantineAppShell.Header>
         <Group justify="space-between" h="100%" px="md">
-          <Group gap="xs">
-            <IconChefHat size={24} color="var(--mantine-color-yellow-6)" />
-            <Text fw={700} size="lg">
-              Recipe finder
-            </Text>
-          </Group>
+          <Anchor
+            component={NavLink}
+            to={RoutePaths.Home}
+            style={{
+              textDecoration: 'none',
+            }}
+          >
+            <Group gap="xs">
+              <IconChefHat size={24} color="var(--mantine-color-yellow-6)" />
+              <Text fw={700} size="lg" c="black">
+                Recipe finder
+              </Text>
+            </Group>
+          </Anchor>
 
           {/* Hamburger Menu for mobile */}
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" />
