@@ -3,7 +3,7 @@ import { Select } from '@mantine/core'
 import { useGetCategories } from '../../hooks/use-get-categories.ts'
 import type { Category } from '../../../../types/types.ts'
 
-type CategoriesFilterControllerProps = {
+interface CategoriesFilterControllerProps {
   selectedCategory: string | null
   onCategorySelect: (category: string | null) => void
   disabled?: boolean
@@ -36,8 +36,8 @@ export const CategoriesFilterController = ({
   )
 }
 
-type CategoriesFilterProps = {
-  categories: Array<Category>
+interface CategoriesFilterProps {
+  categories: Category[]
   selectedCategory: string | null
   onCategorySelect: (category: string | null) => void
   disabled?: boolean

@@ -4,7 +4,7 @@ import type { Cuisine } from '../../../types/types.ts'
 
 const API_BASE = 'https://www.themealdb.com/api/json/v1/1'
 
-const decodeResult = async (res: Response): Promise<Array<Cuisine>> => {
+const decodeResult = async (res: Response): Promise<Cuisine[]> => {
   const json = await res.json()
   const decoded = getCuisinesResponseDecoder.validate(json)
 
@@ -16,7 +16,7 @@ const decodeResult = async (res: Response): Promise<Array<Cuisine>> => {
   return decoded.data
 }
 
-const fetchCuisines = async (): Promise<Array<Cuisine>> => {
+const fetchCuisines = async (): Promise<Cuisine[]> => {
   const url = `${API_BASE}/list.php?a=list`
   const cuisines = await fetch(url).then((result) => decodeResult(result))
 

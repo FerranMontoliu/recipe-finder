@@ -4,7 +4,7 @@ import type { Recipe } from '../../../types/types.ts'
 
 const API_BASE = 'https://www.themealdb.com/api/json/v1/1'
 
-const decodeResult = async (res: Response): Promise<Array<Recipe>> => {
+const decodeResult = async (res: Response): Promise<Recipe[]> => {
   const json = await res.json()
   const decoded = getRecipesResponseDecoder.validate(json)
 
@@ -16,7 +16,7 @@ const decodeResult = async (res: Response): Promise<Array<Recipe>> => {
   return decoded.data
 }
 
-const fetchRecipesByQuery = async (query: string): Promise<Array<Recipe>> => {
+const fetchRecipesByQuery = async (query: string): Promise<Recipe[]> => {
   const url = `${API_BASE}/search.php?s=${query}`
   const recipes = await fetch(url).then((result) => decodeResult(result))
 
@@ -25,7 +25,7 @@ const fetchRecipesByQuery = async (query: string): Promise<Array<Recipe>> => {
 
 const fetchRecipesByCuisine = async (
   cuisine: string,
-): Promise<Array<Recipe>> => {
+): Promise<Recipe[]> => {
   const url = `${API_BASE}/filter.php?a=${cuisine}`
   const recipes = await fetch(url).then((result) => decodeResult(result))
 
@@ -34,7 +34,7 @@ const fetchRecipesByCuisine = async (
 
 const fetchRecipesByIngredient = async (
   query: string,
-): Promise<Array<Recipe>> => {
+): Promise<Recipe[]> => {
   const url = `${API_BASE}/filter.php?i=${query}`
   const recipes = await fetch(url).then((result) => decodeResult(result))
 
@@ -43,7 +43,7 @@ const fetchRecipesByIngredient = async (
 
 const fetchRecipesByCategory = async (
   query: string,
-): Promise<Array<Recipe>> => {
+): Promise<Recipe[]> => {
   const url = `${API_BASE}/filter.php?c=${query}`
   const recipes = await fetch(url).then((result) => decodeResult(result))
 

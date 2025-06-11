@@ -3,7 +3,7 @@ import { Select } from '@mantine/core'
 import { useGetCuisines } from '../../hooks/use-get-cuisines.ts'
 import type { Cuisine } from '../../../../types/types.ts'
 
-type CuisinesFilterControllerProps = {
+interface CuisinesFilterControllerProps {
   selectedCuisine: string | null
   onCuisineSelect: (ingredient: string | null) => void
   disabled?: boolean
@@ -36,8 +36,8 @@ export const CuisinesFilterController = ({
   )
 }
 
-type CuisinesFilterProps = {
-  cuisines: Array<Cuisine>
+interface CuisinesFilterProps {
+  cuisines: Cuisine[]
   selectedCuisine: string | null
   onCuisineSelect: (cuisine: string | null) => void
   disabled?: boolean

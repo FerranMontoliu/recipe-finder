@@ -1,11 +1,11 @@
 import type { ReactElement } from 'react'
 import { Paper, Stack, Title } from '@mantine/core'
 
-type IngredientsListProps = {
-  ingredients: Array<{
+interface IngredientsListProps {
+  ingredients: {
     name: string
     measure: string
-  }>
+  }[]
 }
 export const IngredientsList = ({
   ingredients,

@@ -2,7 +2,7 @@ import type { ReactElement } from 'react'
 import { TextInput } from '@mantine/core'
 import { IconSearch } from '@tabler/icons-react'
 
-type SearchBarProps = {
+interface SearchBarProps {
   query: string
   onQueryChange: (query: string) => void
   disabled?: boolean

@@ -26,7 +26,7 @@ import {
   toggleFavorite,
 } from '../../../../utils/toggle-favorite.ts'
 
-type RecipeGridCardProps = {
+interface RecipeGridCardProps {
   recipe: Recipe
 }
 

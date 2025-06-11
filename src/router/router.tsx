@@ -14,14 +14,14 @@ const childRoutes: Record<RoutePaths, ReactElement> = {
   [RoutePaths.NotFound]: <NotFoundPage />,
 }
 
-const childRoutesArray: Array<RouteObject> = Object.entries(childRoutes).map(
+const childRoutesArray: RouteObject[] = Object.entries(childRoutes).map(
   ([path, element]) => ({
     path,
     element,
   }),
 )
 
-const routeConfig: Array<RouteObject> = [
+const routeConfig: RouteObject[] = [
   {
     path: '',
     element: <AppShell />,

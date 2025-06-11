@@ -90,10 +90,10 @@ export const recipeDecoder: D.Decoder<Recipe> = D.object({
   } satisfies Recipe
 })
 
-export const recipeListDecoder: D.Decoder<Array<Recipe>> =
+export const recipeListDecoder: D.Decoder<Recipe[]> =
   D.array(recipeDecoder)
 
-export const getRecipesResponseDecoder: D.Decoder<Array<Recipe>> = D.object({
+export const getRecipesResponseDecoder: D.Decoder<Recipe[]> = D.object({
   required: {
     meals: D.nullable(recipeListDecoder),
   },
@@ -113,10 +113,10 @@ const ingredientDecoder: D.Decoder<Ingredient> = D.object({
   }),
 )
 
-const ingredientListDecoder: D.Decoder<Array<Ingredient>> =
+const ingredientListDecoder: D.Decoder<Ingredient[]> =
   D.array(ingredientDecoder)
 
-export const getIngredientsResponseDecoder: D.Decoder<Array<Ingredient>> =
+export const getIngredientsResponseDecoder: D.Decoder<Ingredient[]> =
   D.object({
     required: {
       meals: D.nullable(ingredientListDecoder),
@@ -133,9 +133,9 @@ const cuisineDecoder: D.Decoder<Cuisine> = D.object({
   }),
 )
 
-const cuisineListDecoder: D.Decoder<Array<Cuisine>> = D.array(cuisineDecoder)
+const cuisineListDecoder: D.Decoder<Cuisine[]> = D.array(cuisineDecoder)
 
-export const getCuisinesResponseDecoder: D.Decoder<Array<Cuisine>> = D.object({
+export const getCuisinesResponseDecoder: D.Decoder<Cuisine[]> = D.object({
   required: {
     meals: D.nullable(cuisineListDecoder),
   },
@@ -151,9 +151,9 @@ const categoryDecoder: D.Decoder<Category> = D.object({
   }),
 )
 
-const categoryListDecoder: D.Decoder<Array<Category>> = D.array(categoryDecoder)
+const categoryListDecoder: D.Decoder<Category[]> = D.array(categoryDecoder)
 
-export const getCategoriesResponseDecoder: D.Decoder<Array<Category>> =
+export const getCategoriesResponseDecoder: D.Decoder<Category[]> =
   D.object({
     required: {
       meals: D.nullable(categoryListDecoder),

@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react'
 import { List, Paper, Stack, Title } from '@mantine/core'
 
-type InstructionsListProps = {
-  instructions: Array<string>
+interface InstructionsListProps {
+  instructions: string[]
 }
 
 export const InstructionsList = ({

@@ -1,26 +1,26 @@
-export type Recipe = {
+export interface Recipe {
   recipeId: string
   title: string
   category: string | null
   area: string | null
-  instructions: Array<string>
+  instructions: string[]
   imageUrl: string | null
   videoUrl: string | null
-  ingredients: Array<{
+  ingredients: {
     name: string
     measure: string
-  }>
+  }[]
 }
 
-export type Ingredient = {
+export interface Ingredient {
   ingredientId: string
   name: string
 }
 
-export type Cuisine = {
+export interface Cuisine {
   name: string
 }
 
-export type Category = {
+export interface Category {
   name: string
 }

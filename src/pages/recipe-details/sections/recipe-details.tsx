@@ -2,7 +2,7 @@ import type { ReactElement } from 'react'
 import { Anchor, Group, Paper, SimpleGrid, Stack, Text } from '@mantine/core'
 import { IconBrandYoutube } from '@tabler/icons-react'
 
-type RecipeDetailsProps = {
+interface RecipeDetailsProps {
   category: string | null
   area: string | null
   videoUrl: string | null

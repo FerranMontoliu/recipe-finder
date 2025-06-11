@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 import { AspectRatio, Image } from '@mantine/core'
 
-type RecipeImageProps = {
+interface RecipeImageProps {
   imageUrl: string | null
   title: string
 }

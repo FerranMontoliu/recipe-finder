@@ -4,7 +4,7 @@ import { IconHeart, IconHeartFilled } from '@tabler/icons-react'
 import type { Recipe } from '../../../types/types.ts'
 import { isFavorite, toggleFavorite } from '../../../utils/toggle-favorite.ts'
 
-type RecipeHeaderProps = {
+interface RecipeHeaderProps {
   recipe: Recipe
   title: string
 }

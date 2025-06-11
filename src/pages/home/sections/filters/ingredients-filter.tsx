@@ -3,7 +3,7 @@ import { Select } from '@mantine/core'
 import { useGetIngredients } from '../../hooks/use-get-ingredients.ts'
 import type { Ingredient } from '../../../../types/types.ts'
 
-type IngredientsFilterControllerProps = {
+interface IngredientsFilterControllerProps {
   selectedIngredient: string | null
   onIngredientSelect: (ingredient: string | null) => void
   disabled?: boolean
@@ -36,8 +36,8 @@ export const IngredientsFilterController = ({
   )
 }
 
-type IngredientsFilterProps = {
-  ingredients: Array<Ingredient>
+interface IngredientsFilterProps {
+  ingredients: Ingredient[]
   selectedIngredient: string | null
   onIngredientSelect: (ingredient: string | null) => void
   disabled?: boolean

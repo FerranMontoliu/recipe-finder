@@ -3,8 +3,8 @@ import { Center, SimpleGrid, Text } from '@mantine/core'
 import { RecipeGridCard } from './recipe-grid-card.tsx'
 import type { Recipe } from '../../../../types/types.ts'
 
-type RecipeGridProps = {
-  recipes: Array<Recipe>
+interface RecipeGridProps {
+  recipes: Recipe[]
 }
 export const RecipeGrid = ({ recipes }: RecipeGridProps): ReactElement => {
   if (recipes.length === 0) {

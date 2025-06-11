@@ -5,7 +5,7 @@ import { SimpleGrid, Stack } from '@mantine/core'
 import { CuisinesFilterController } from './cuisines-filter.tsx'
 import { CategoriesFilterController } from './categories-filter.tsx'
 
-type FiltersProps = {
+interface FiltersProps {
   query: string
   onQueryChange: (query: string) => void
 
