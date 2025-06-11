@@ -33,7 +33,8 @@ export const RecipeGridCard = ({
   return (
     <Card
       shadow="sm"
-      padding="lg"
+      py={0}
+      px={0}
       radius="md"
       withBorder
       className="hover-card"
@@ -61,8 +62,8 @@ export const RecipeGridCard = ({
             color="red"
             size="lg"
             pos="absolute"
-            top="8px"
-            right="8px"
+            top="24px"
+            right="24px"
             aria-label="Favorite"
             className="hover-icon"
             onClick={(event) => {
@@ -70,38 +71,43 @@ export const RecipeGridCard = ({
 
               console.log('Adding to favorites:', recipe.title)
             }}
+            style={{
+              zIndex: 10,
+            }}
           >
             <IconHeart size="20px" />
           </ActionIcon>
         </Tooltip>
       </Card.Section>
 
-      <Stack mt="md" gap="8px">
+      <Stack gap="8px" px="16px" py="8px">
         <Text fw={600} size="lg" lineClamp={2}>
           {recipe.title}
         </Text>
 
-        <Group gap="4px">
-          {recipe.category && (
-            <Badge
-              variant="light"
-              color="teal"
-              leftSection={<IconCategory size="12px" />}
-            >
-              {recipe.category}
-            </Badge>
-          )}
+        {recipe.category || recipe.area ? (
+          <Group gap="4px">
+            {recipe.category && (
+              <Badge
+                variant="light"
+                color="teal"
+                leftSection={<IconCategory size="12px" />}
+              >
+                {recipe.category}
+              </Badge>
+            )}
 
-          {recipe.area && (
-            <Badge
-              variant="light"
-              color="blue"
-              leftSection={<IconMapPin size="12px" />}
-            >
-              {recipe.area}
-            </Badge>
-          )}
-        </Group>
+            {recipe.area && (
+              <Badge
+                variant="light"
+                color="blue"
+                leftSection={<IconMapPin size="12px" />}
+              >
+                {recipe.area}
+              </Badge>
+            )}
+          </Group>
+        ) : null}
 
         {recipe.videoUrl && (
           <Anchor
