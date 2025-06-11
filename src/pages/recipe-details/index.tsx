@@ -8,6 +8,7 @@ import { InstructionsList } from './sections/instructions-list.tsx'
 import { RecipeImage } from './sections/recipe-image.tsx'
 import { RecipeDetails } from './sections/recipe-details.tsx'
 import { RecipeHeader } from './sections/recipe-header.tsx'
+import { useWindowTitle } from '../../hooks/use-window-title.ts'
 
 export const RecipeDetailsPage = (): ReactElement => {
   const { recipeId } = useParams() as { recipeId: string }
@@ -15,6 +16,8 @@ export const RecipeDetailsPage = (): ReactElement => {
   const getRecipeResult = useGetRecipeById(recipeId)
 
   const recipe = getRecipeResult.data ?? null
+
+  useWindowTitle(recipe?.title ?? 'Recipe finder')
 
   return (
     <Stack justify="center" align="center" gap="16px">

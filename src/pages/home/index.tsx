@@ -6,8 +6,11 @@ import { useDebouncedState } from '@mantine/hooks'
 import { RecipeGrid } from '../../components/recipe-grid/recipe-grid.tsx'
 import { IconInfoCircle } from '@tabler/icons-react'
 import { Filters } from './sections/filters/filters.tsx'
+import { useWindowTitle } from '../../hooks/use-window-title.ts'
 
 export const HomePage = (): ReactElement => {
+  useWindowTitle('Recipe finder')
+
   const [debouncedQueryString, setDebouncedQueryString] =
     useDebouncedState<string>('', 200)
   const [cuisine, setCuisine] = useState<string | null>(null)
