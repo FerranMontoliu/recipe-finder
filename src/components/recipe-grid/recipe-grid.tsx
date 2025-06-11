@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 import { Center, SimpleGrid, Text } from '@mantine/core'
 import { RecipeGridCard } from './recipe-grid-card.tsx'
-import type { Recipe } from '../../../../types'
+import type { Recipe } from '../../types'
 
 interface RecipeGridProps {
   recipes: Array<Recipe>

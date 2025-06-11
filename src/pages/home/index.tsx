@@ -3,7 +3,7 @@ import { Alert, Center, Loader, Stack } from '@mantine/core'
 import { Header } from './sections/header.tsx'
 import { useGetRecipes } from './hooks/use-get-recipes.ts'
 import { useDebouncedState } from '@mantine/hooks'
-import { RecipeGrid } from './sections/recipe-grid/recipe-grid.tsx'
+import { RecipeGrid } from '../../components/recipe-grid/recipe-grid.tsx'
 import { IconInfoCircle } from '@tabler/icons-react'
 import { Filters } from './sections/filters/filters.tsx'
 

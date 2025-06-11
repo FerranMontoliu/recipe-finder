@@ -4,7 +4,7 @@ import { IconBrandYoutube } from '@tabler/icons-react'
 
 interface RecipeDetailsProps {
   category: string | null
-  area: string | null
+  cuisine: string | null
   videoUrl: string | null
   numIngredients: number
   numSteps: number
@@ -12,57 +12,35 @@ interface RecipeDetailsProps {
 
 export const RecipeDetails = ({
   category,
-  area,
+  cuisine,
   numIngredients,
   numSteps,
   videoUrl,
 }: RecipeDetailsProps): ReactElement => (
-  <Stack>
+  <Stack h="100%">
     <SimpleGrid
       cols={{
         base: 2,
         sm: 4,
       }}
+      h="100%"
     >
-      <Paper>
-        <Stack gap="8px" align="center">
-          <Text fw={500}>Category</Text>
-          <Text c="yellow.8" fw="bold">
-            {category}
-          </Text>
-        </Stack>
-      </Paper>
+      <RecipeDetailsItem label="Category" value={category} />
 
-      <Paper>
-        <Stack gap="8px" align="center">
-          <Text fw={500}>Cuisine</Text>
-          <Text c="yellow.8" fw="bold">
-            {area}
-          </Text>
-        </Stack>
-      </Paper>
+      <RecipeDetailsItem label="Cuisine" value={cuisine} />
 
-      <Paper>
-        <Stack gap="8px" align="center">
-          <Text fw={500}>Ingredients</Text>
-          <Text c="yellow.8" fw="bold">
-            {numIngredients}
-          </Text>
-        </Stack>
-      </Paper>
+      <RecipeDetailsItem label="Ingredients" value={numIngredients} />
 
-      <Paper>
-        <Stack gap="8px" align="center">
-          <Text fw={500}>Steps</Text>
-          <Text c="yellow.8" fw="bold">
-            {numSteps}
-          </Text>
-        </Stack>
-      </Paper>
+      <RecipeDetailsItem label="Steps" value={numSteps} />
     </SimpleGrid>
 
     {videoUrl && (
-      <Paper>
+      <Paper
+        h="100%"
+        style={{
+          alignContent: 'center',
+        }}
+      >
         <Group>
           <IconBrandYoutube size="24px" color="red" />
 
@@ -81,4 +59,27 @@ export const RecipeDetails = ({
       </Paper>
     )}
   </Stack>
+)
+
+type RecipeDetailsItemProps = {
+  label: string
+  value: string | number | null
+}
+const RecipeDetailsItem = ({
+  label,
+  value,
+}: RecipeDetailsItemProps): ReactElement => (
+  <Paper
+    h="100%"
+    style={{
+      alignContent: 'center',
+    }}
+  >
+    <Stack gap="8px" align="center">
+      <Text fw={500}>{label}</Text>
+      <Text c="yellow.8" fw="bold">
+        {value ? value : 'N/A'}
+      </Text>
+    </Stack>
+  </Paper>
 )

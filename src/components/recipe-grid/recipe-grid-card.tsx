@@ -17,11 +17,11 @@ import {
   IconMapPin,
 } from '@tabler/icons-react'
 import { type ReactElement, useState } from 'react'
-import type { Recipe } from '../../../../types'
+import type { Recipe } from '../../types'
 
 import './recipe-grid-card.css'
 import { useNavigate } from 'react-router-dom'
-import { isFavorite, toggleFavorite } from '../../../../utils/favorite-utils.ts'
+import { isFavorite, toggleFavorite } from '../../utils/favorite-utils.ts'
 
 interface RecipeGridCardProps {
   recipe: Recipe
@@ -107,7 +107,7 @@ export const RecipeGridCard = ({
           {recipe.title}
         </Text>
 
-        {recipe.category || recipe.area ? (
+        {recipe.category || recipe.cuisine ? (
           <Group gap="4px">
             {recipe.category && (
               <Badge
@@ -119,13 +119,13 @@ export const RecipeGridCard = ({
               </Badge>
             )}
 
-            {recipe.area && (
+            {recipe.cuisine && (
               <Badge
                 variant="light"
                 color="blue"
                 leftSection={<IconMapPin size="12px" />}
               >
-                {recipe.area}
+                {recipe.cuisine}
               </Badge>
             )}
           </Group>

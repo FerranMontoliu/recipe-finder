@@ -18,5 +18,13 @@ export const theme: MantineThemeOverride = createTheme({
         py: '16px',
       },
     },
+    List: {
+      styles: {
+        item: {
+          paddingRight: '24px',
+          wordBreak: 'break-word',
+        },
+      },
+    },
   },
 })

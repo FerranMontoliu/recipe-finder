@@ -44,7 +44,7 @@ export const RecipeDetailsPage = (): ReactElement => {
             >
               <RecipeDetails
                 category={recipe.category}
-                area={recipe.area}
+                cuisine={recipe.cuisine}
                 videoUrl={recipe.videoUrl}
                 numIngredients={recipe.ingredients.length}
                 numSteps={recipe.instructions.length}
