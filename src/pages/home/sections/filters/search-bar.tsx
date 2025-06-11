@@ -5,13 +5,15 @@ import { IconSearch } from '@tabler/icons-react'
 type SearchBarProps = {
   query: string
   onQueryChange: (query: string) => void
+  disabled?: boolean
 }
 export const SearchBar = ({
   query,
   onQueryChange,
+  disabled = false,
 }: SearchBarProps): ReactElement => (
   <TextInput
-    placeholder="Search by recipe name, ingredient, category, or area..."
+    placeholder="Search by recipe name..."
     leftSection={<IconSearch size={16} />}
     radius="md"
     size="md"
@@ -20,5 +22,6 @@ export const SearchBar = ({
     onChange={(event) => {
       onQueryChange(event.currentTarget.value)
     }}
+    disabled={disabled}
   />
 )

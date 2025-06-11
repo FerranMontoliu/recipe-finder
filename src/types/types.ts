@@ -11,3 +11,16 @@ export type Recipe = {
     measure: string
   }>
 }
+
+export type Ingredient = {
+  ingredientId: string
+  name: string
+}
+
+export type Cuisine = {
+  name: string
+}
+
+export type Category = {
+  name: string
+}

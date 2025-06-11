@@ -14,7 +14,7 @@ const decodeResult = async (res: Response): Promise<Recipe | null> => {
     return null
   }
 
-  return decoded.data.meals[0] ?? null
+  return decoded.data[0] ?? null
 }
 
 const fetchRecipeByIdQuery = async (

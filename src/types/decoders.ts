@@ -1,5 +1,5 @@
 import * as D from 'schemawax'
-import type { Recipe } from './types.ts'
+import type { Category, Cuisine, Ingredient, Recipe } from './types.ts'
 
 export const recipeDecoder: D.Decoder<Recipe> = D.object({
   required: {
@@ -93,12 +93,69 @@ export const recipeDecoder: D.Decoder<Recipe> = D.object({
 export const recipeListDecoder: D.Decoder<Array<Recipe>> =
   D.array(recipeDecoder)
 
-export const getRecipesResponseDecoder: D.Decoder<{
-  meals: Array<Recipe>
-}> = D.object({
+export const getRecipesResponseDecoder: D.Decoder<Array<Recipe>> = D.object({
   required: {
     meals: D.nullable(recipeListDecoder),
   },
-}).andThen((decoded) => ({
-  meals: decoded.meals ?? [],
-}))
+}).andThen((decoded) => decoded.meals ?? [])
+
+const ingredientDecoder: D.Decoder<Ingredient> = D.object({
+  required: {
+    idIngredient: D.string,
+    strIngredient: D.string,
+  },
+}).andThen(
+  (decoded): Ingredient => ({
+    ingredientId: decoded.idIngredient,
+    name:
+      decoded.strIngredient.charAt(0).toUpperCase() +
+      decoded.strIngredient.slice(1),
+  }),
+)
+
+const ingredientListDecoder: D.Decoder<Array<Ingredient>> =
+  D.array(ingredientDecoder)
+
+export const getIngredientsResponseDecoder: D.Decoder<Array<Ingredient>> =
+  D.object({
+    required: {
+      meals: D.nullable(ingredientListDecoder),
+    },
+  }).andThen((decoded) => decoded.meals ?? [])
+
+const cuisineDecoder: D.Decoder<Cuisine> = D.object({
+  required: {
+    strArea: D.string,
+  },
+}).andThen(
+  (decoded): Cuisine => ({
+    name: decoded.strArea,
+  }),
+)
+
+const cuisineListDecoder: D.Decoder<Array<Cuisine>> = D.array(cuisineDecoder)
+
+export const getCuisinesResponseDecoder: D.Decoder<Array<Cuisine>> = D.object({
+  required: {
+    meals: D.nullable(cuisineListDecoder),
+  },
+}).andThen((decoded) => decoded.meals ?? [])
+
+const categoryDecoder: D.Decoder<Category> = D.object({
+  required: {
+    strCategory: D.string,
+  },
+}).andThen(
+  (decoded): Category => ({
+    name: decoded.strCategory,
+  }),
+)
+
+const categoryListDecoder: D.Decoder<Array<Category>> = D.array(categoryDecoder)
+
+export const getCategoriesResponseDecoder: D.Decoder<Array<Category>> =
+  D.object({
+    required: {
+      meals: D.nullable(categoryListDecoder),
+    },
+  }).andThen((decoded) => decoded.meals ?? [])
