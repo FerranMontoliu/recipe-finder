@@ -1,17 +1,8 @@
 import type { ReactElement } from 'react'
-import {
-  Anchor,
-  Group,
-  Paper,
-  SimpleGrid,
-  Stack,
-  Text,
-  Title,
-} from '@mantine/core'
+import { Anchor, Group, Paper, SimpleGrid, Stack, Text } from '@mantine/core'
 import { IconBrandYoutube } from '@tabler/icons-react'
 
 type RecipeDetailsProps = {
-  title: string
   category: string | null
   area: string | null
   videoUrl: string | null
@@ -20,7 +11,6 @@ type RecipeDetailsProps = {
 }
 
 export const RecipeDetails = ({
-  title,
   category,
   area,
   numIngredients,
@@ -28,8 +18,6 @@ export const RecipeDetails = ({
   videoUrl,
 }: RecipeDetailsProps): ReactElement => (
   <Stack>
-    <Title order={1}>{title}</Title>
-
     <SimpleGrid cols={4}>
       <Paper>
         <Stack gap="8px" align="center">

@@ -7,6 +7,7 @@ import { IngredientsList } from './sections/ingredients-list.tsx'
 import { InstructionsList } from './sections/instructions-list.tsx'
 import { RecipeImage } from './sections/recipe-image.tsx'
 import { RecipeDetails } from './sections/recipe-details.tsx'
+import { RecipeHeader } from './sections/recipe-header.tsx'
 
 export const RecipeDetailsPage = (): ReactElement => {
   const { recipeId } = useParams() as { recipeId: string }
@@ -31,50 +32,53 @@ export const RecipeDetailsPage = (): ReactElement => {
           There was an error fetching the recipe. Please try again later.
         </Alert>
       ) : recipe !== null ? (
-        <Grid>
-          <Grid.Col
-            span={{
-              base: 12,
-              sm: 8,
-            }}
-          >
-            <RecipeDetails
-              title={recipe.title}
-              category={recipe.category}
-              area={recipe.area}
-              videoUrl={recipe.videoUrl}
-              numIngredients={recipe.ingredients.length}
-              numSteps={recipe.instructions.length}
-            />
-          </Grid.Col>
+        <>
+          <RecipeHeader title={recipe.title} recipe={recipe} />
 
-          <Grid.Col
-            span={{
-              base: 12,
-              sm: 4,
-            }}
-          >
-            <RecipeImage imageUrl={recipe.imageUrl} title={recipe.title} />
-          </Grid.Col>
+          <Grid>
+            <Grid.Col
+              span={{
+                base: 12,
+                sm: 8,
+              }}
+            >
+              <RecipeDetails
+                category={recipe.category}
+                area={recipe.area}
+                videoUrl={recipe.videoUrl}
+                numIngredients={recipe.ingredients.length}
+                numSteps={recipe.instructions.length}
+              />
+            </Grid.Col>
 
-          <Grid.Col
-            span={{
-              base: 12,
-              sm: 4,
-            }}
-          >
-            <IngredientsList ingredients={recipe.ingredients} />
-          </Grid.Col>
+            <Grid.Col
+              span={{
+                base: 12,
+                sm: 4,
+              }}
+            >
+              <RecipeImage imageUrl={recipe.imageUrl} title={recipe.title} />
+            </Grid.Col>
 
-          <Grid.Col
-            span={{
-              base: 12,
-              sm: 8,
-            }}
-          >
-            <InstructionsList instructions={recipe.instructions} />
-          </Grid.Col>
-        </Grid>
+            <Grid.Col
+              span={{
+                base: 12,
+                sm: 4,
+              }}
+            >
+              <IngredientsList ingredients={recipe.ingredients} />
+            </Grid.Col>
+
+            <Grid.Col
+              span={{
+                base: 12,
+                sm: 8,
+              }}
+            >
+              <InstructionsList instructions={recipe.instructions} />
+            </Grid.Col>
+          </Grid>
+        </>
       ) : null}
     </Stack>
   )

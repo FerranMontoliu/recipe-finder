@@ -13,13 +13,18 @@ import {
   IconBrandYoutube,
   IconCategory,
   IconHeart,
+  IconHeartFilled,
   IconMapPin,
 } from '@tabler/icons-react'
-import type { ReactElement } from 'react'
+import { type ReactElement, useState } from 'react'
 import type { Recipe } from '../../../../types/types.ts'
 
 import './recipe-grid-card.css'
 import { useNavigate } from 'react-router-dom'
+import {
+  isFavorite,
+  toggleFavorite,
+} from '../../../../utils/toggle-favorite.ts'
 
 type RecipeGridCardProps = {
   recipe: Recipe
@@ -28,7 +33,13 @@ type RecipeGridCardProps = {
 export const RecipeGridCard = ({
   recipe,
 }: RecipeGridCardProps): ReactElement => {
+  const { recipeId } = recipe
+
   const navigate = useNavigate()
+
+  const [favorite, setFavorite] = useState<boolean>((): boolean =>
+    isFavorite({ recipeId }),
+  )
 
   return (
     <Card
@@ -58,8 +69,8 @@ export const RecipeGridCard = ({
 
         <Tooltip label="Add to favorites" position="top" withArrow>
           <ActionIcon
-            variant="light"
-            color="red"
+            variant="filled"
+            color="yellow"
             size="lg"
             pos="absolute"
             top="24px"
@@ -69,13 +80,19 @@ export const RecipeGridCard = ({
             onClick={(event) => {
               event.stopPropagation()
 
-              console.log('Adding to favorites:', recipe.title)
+              toggleFavorite({ recipeId }).then(() => {
+                setFavorite((prev) => !prev)
+              })
             }}
             style={{
               zIndex: 10,
             }}
           >
-            <IconHeart size="20px" />
+            {favorite ? (
+              <IconHeartFilled size="20px" />
+            ) : (
+              <IconHeart size="20px" />
+            )}
           </ActionIcon>
         </Tooltip>
       </Card.Section>
