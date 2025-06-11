@@ -67,7 +67,11 @@ export const RecipeGridCard = ({
           className="hover-image"
         />
 
-        <Tooltip label="Add to favorites" position="top" withArrow>
+        <Tooltip
+          label={favorite ? 'Remove from favorites' : 'Add to favorites'}
+          position="top"
+          withArrow
+        >
           <ActionIcon
             variant="filled"
             color="yellow"
