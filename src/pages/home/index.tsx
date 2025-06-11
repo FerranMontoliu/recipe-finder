@@ -1,5 +1,5 @@
 import { type ReactElement } from 'react'
-import { Alert, Center, Container, Loader, Stack } from '@mantine/core'
+import { Alert, Center, Loader, Stack } from '@mantine/core'
 import { Header } from './sections/header.tsx'
 import { SearchBar } from './sections/search-bar.tsx'
 import { useGetRecipes } from '../../hooks/use-get-recipes.ts'
@@ -16,32 +16,30 @@ export const HomePage = (): ReactElement => {
   const recipes = getRecipesResult.data ?? []
 
   return (
-    <Container>
-      <Stack justify="center" align="center" gap="16px">
-        <Header />
+    <Stack justify="center" align="center" gap="16px">
+      <Header />
 
-        <SearchBar
-          query={debouncedQueryString}
-          onQueryChange={setDebouncedQueryString}
-        />
+      <SearchBar
+        query={debouncedQueryString}
+        onQueryChange={setDebouncedQueryString}
+      />
 
-        {getRecipesResult.isLoading ? (
-          <Center w="100%" h="300px">
-            <Loader />
-          </Center>
-        ) : getRecipesResult.isError ? (
-          <Alert
-            variant="light"
-            color="red"
-            title="Error"
-            icon={<IconInfoCircle />}
-          >
-            There was an error fetching the recipes. Please try again later.
-          </Alert>
-        ) : (
-          <RecipeGrid recipes={recipes} />
-        )}
-      </Stack>
-    </Container>
+      {getRecipesResult.isLoading ? (
+        <Center w="100%" h="300px">
+          <Loader />
+        </Center>
+      ) : getRecipesResult.isError ? (
+        <Alert
+          variant="light"
+          color="red"
+          title="Error"
+          icon={<IconInfoCircle />}
+        >
+          There was an error fetching the recipes. Please try again later.
+        </Alert>
+      ) : (
+        <RecipeGrid recipes={recipes} />
+      )}
+    </Stack>
   )
 }

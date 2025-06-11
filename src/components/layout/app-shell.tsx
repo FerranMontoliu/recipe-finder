@@ -1,7 +1,9 @@
 import { useDisclosure } from '@mantine/hooks'
 import {
+  Anchor,
   AppShell as MantineAppShell,
   Burger,
+  Container,
   Drawer,
   Group,
   Stack,
@@ -31,10 +33,7 @@ export const AppShell = (): ReactElement => {
 
           {/* Inline links for desktop */}
           <Group visibleFrom="sm">
-            <Group gap="sm">
-              <NavLink to={RoutePaths.Home}>Home</NavLink>
-              <NavLink to={RoutePaths.Favorites}>Favorite Recipes</NavLink>
-            </Group>
+            <Group gap="sm">{navLinks}</Group>
           </Group>
         </Group>
       </MantineAppShell.Header>
@@ -48,15 +47,25 @@ export const AppShell = (): ReactElement => {
         position="top"
         h="fit-content"
       >
-        <Stack gap="sm">
-          <NavLink to={RoutePaths.Home}>Home</NavLink>
-          <NavLink to={RoutePaths.Favorites}>Favorite Recipes</NavLink>
-        </Stack>
+        <Stack gap="sm">{navLinks}</Stack>
       </Drawer>
 
       <MantineAppShell.Main>
-        <Outlet />
+        <Container>
+          <Outlet />
+        </Container>
       </MantineAppShell.Main>
     </MantineAppShell>
   )
 }
+
+const navLinks: ReactElement = (
+  <>
+    <Anchor component={NavLink} to={RoutePaths.Home}>
+      Home
+    </Anchor>
+    <Anchor component={NavLink} to={RoutePaths.Favorites}>
+      Favorites
+    </Anchor>
+  </>
+)
