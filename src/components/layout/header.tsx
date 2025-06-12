@@ -61,12 +61,12 @@ export const Header = (): ReactElement => {
             opened={opened}
             onClick={toggle}
             hiddenFrom="sm"
-            test-id="app-shell-header-burger-button"
+            test-id="app-shell-header-hamburger-button"
           />
 
           {/* Desktop nav */}
           <Group visibleFrom="sm">
-            <Group gap="sm" test-id="app-shell-header-links">
+            <Group gap="sm" test-id="app-shell-header-links--desktop">
               {navLinks}
             </Group>
           </Group>
@@ -89,7 +89,7 @@ export const Header = (): ReactElement => {
               borderTopRightRadius: 0,
             }}
             hiddenFrom="sm"
-            pos="absolute"
+            pos="sticky"
             top={60}
             left={0}
             w="100%"
@@ -98,7 +98,11 @@ export const Header = (): ReactElement => {
             p="lg"
             withBorder
           >
-            <Stack gap="lg" align="flex-start" test-id="app-shell-header-links">
+            <Stack
+              gap="lg"
+              align="flex-start"
+              test-id="app-shell-header-links--mobile"
+            >
               {navLinks}
             </Stack>
           </Paper>
