@@ -52,7 +52,7 @@ export const SearchBar = ({
         onChange(event.currentTarget.value)
       }}
       disabled={disabled}
-      data-testid="search-bar-input"
+      test-id="search-bar-input"
     />
   )
 }
