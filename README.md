@@ -20,17 +20,17 @@
    # Development build:
    pnpm dev
   
-  # Production build:
-  pnpm build && pnpm preview
+   # Production build:
+   pnpm build && pnpm preview
    ```
 
 4. Run tests
     ```bash  
    # Integration tests (Vitest):
    pnpm test:integration
-  
-  # E2E tests (Playwright):
-  pnpm test:e2e
+   
+   # E2E tests (Playwright):
+   pnpm test:e2e
    ```
 
 ## 🛠️ Tools and Libraries Used
