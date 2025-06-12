@@ -14,27 +14,29 @@ import { RoutePaths } from '../../router/types.ts'
 import { IconChefHat } from '@tabler/icons-react'
 import { useDisclosure } from '@mantine/hooks'
 
-const navLinks: ReactElement = (
-  <>
-    <Anchor
-      component={NavLink}
-      to={RoutePaths.Home}
-      test-id="app-shell-header-home-link"
-    >
-      Home
-    </Anchor>
-    <Anchor
-      component={NavLink}
-      to={RoutePaths.Favorites}
-      test-id="app-shell-header-favorites-link"
-    >
-      Favorites
-    </Anchor>
-  </>
-)
-
 export const Header = (): ReactElement => {
-  const [opened, { toggle }] = useDisclosure()
+  const [opened, { toggle, close }] = useDisclosure()
+
+  const navLinks: ReactElement = (
+    <>
+      <Anchor
+        component={NavLink}
+        to={RoutePaths.Home}
+        test-id="app-shell-header-home-link"
+        onClick={close}
+      >
+        Home
+      </Anchor>
+      <Anchor
+        component={NavLink}
+        to={RoutePaths.Favorites}
+        test-id="app-shell-header-favorites-link"
+        onClick={close}
+      >
+        Favorites
+      </Anchor>
+    </>
+  )
 
   return (
     <>
