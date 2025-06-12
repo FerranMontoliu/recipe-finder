@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { getByTestId } from './helpers.ts'
+import { getByTestId } from '../helpers.ts'
 
 const URL = '/favorites'
 
