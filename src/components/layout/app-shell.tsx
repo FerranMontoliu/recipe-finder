@@ -6,10 +6,10 @@ import { Header } from './header.tsx'
 
 export const AppShell = (): ReactElement => {
   return (
-    <MantineAppShell header={{ height: 60 }}>
+    <MantineAppShell header={{ height: 60 }} test-id="app-shell">
       <Header />
 
-      <MantineAppShell.Main>
+      <MantineAppShell.Main test-id="app-shell-main">
         <>
           <Container p="md" mih="calc(100vh - 60px - 56px)">
             <Outlet />
